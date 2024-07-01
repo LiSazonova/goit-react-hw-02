@@ -3,10 +3,10 @@ import s from './Options.module.css';
 const Options = () => {
     return (
         <div className={s.wrapper}>
-            <button>Good</button>
-            <button>Neutral</button>
-            <button>Bad</button>
-            <button>Reset</button>
+            <button className={`${s.btn} ${s.btnGood}`}>Good</button>
+            <button className={`${s.btn} ${s.btnNeutral}`}>Neutral</button>
+            <button className={`${s.btn} ${s.btnBad}`}>Bad</button>
+            <button className={`${s.btn} ${s.btnReset}`}>Reset</button>
         </div>
     )
 }
