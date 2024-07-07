@@ -17,12 +17,16 @@ const App = () => {
     setFeedback(prev => ({ ...prev, [feedbackType]: prev[feedbackType] + 1 }));
   };
 
+  const resetFeedback = () => {
+    setFeedback(feedbackData);
+  }
+
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
     return (
         <>
             <Description />
-            <Options updateFeedback={updateFeedback} />
+            <Options updateFeedback={updateFeedback} resetFeedback={resetFeedback} totalFeedback={totalFeedback} />
         
         {totalFeedback > 0 ? (
         <Feedback
