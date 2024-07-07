@@ -1,8 +1,14 @@
 body {
+    display: flex;
+    justify-content: center;
+
+    background-color: #282828;
+    color: #ececec;
+
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     line-height: 1.5;
-    padding: 30px;
+    padding: 50px;
 }
 
 h1,
