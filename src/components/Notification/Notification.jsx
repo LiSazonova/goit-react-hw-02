@@ -5,7 +5,7 @@ const Notification = () => {
     <div>
       <p className={s.notification_text}>No feedback yet</p>
     </div>
-  )
-}
+  );
+};
 
 export default Notification;
