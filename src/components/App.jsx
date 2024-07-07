@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Description from './Description/Description';
 import Feedback from './Feedback/Feedback';
 import Options from './Options/Options';
+import Notification from './Notification/Notification';
 
 const feedbackData = {
   good: 0,
@@ -10,24 +11,27 @@ const feedbackData = {
 };
 
 const App = () => {
-    const [feedback, setFeedback] = useState(feedbackData);
+  const [feedback, setFeedback] = useState(feedbackData);
+  
+  const updateFeedback = (feedbackType) => {
+    setFeedback(prev => ({ ...prev, [feedbackType]: prev[feedbackType] + 1 }));
+  };
 
-    const updateFeedback = (feedbackType) => {
-        if (feedbackType === 'reset') {
-            setFeedback(feedbackData);
-        } else {
-            setFeedback((prevFeedback) => ({
-                ...prevFeedback,
-                [feedbackType]: prevFeedback[feedbackType] + 1,
-            }));
-        }
-    };
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
     return (
         <>
             <Description />
             <Options updateFeedback={updateFeedback} />
-            <Feedback feedback={feedback} />
+        
+        {totalFeedback > 0 ? (
+        <Feedback
+          feedback={feedback}
+          totalFeedback={totalFeedback}
+        />
+      ) : (
+        <Notification />
+      )}
         </>
     );
 };
